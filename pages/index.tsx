@@ -5,9 +5,8 @@ import { Inter } from 'next/font/google';
 import { Button, Divider, List, Space, Tag, Typography } from 'antd';
 import { useEffect, useState } from 'react';
 import { IWorkout, IWorkouts } from './api/workouts';
+import Divide from '@/components/divide';
 const { Title, Paragraph, Text, Link } = Typography;
-
-//const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
   const [data, setData] = useState<IWorkouts>();
@@ -38,14 +37,7 @@ export default function Home() {
                   ))}
                   <Tag color={'green'}>{totalDuration(item)} mins</Tag>
                 </Space>
-                <div
-                  style={{
-                    width: '100%',
-                    height: '1px',
-                    marginTop: '16px',
-                    background: '#AaAaAa'
-                  }}
-                ></div>
+                <Divide />
               </Space>
             </List.Item>
           );
