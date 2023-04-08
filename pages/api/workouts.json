@@ -1,0 +1,266 @@
+{
+  "workouts": [
+    {
+      "name": "Sunday - Lower body",
+      "equipment": ["Mat", "Dumbbells", "Bench"],
+      "startMessages": ["Start recording functional training"],
+      "endMessages": ["Stop recording functional training"],
+      "groups": [
+        {
+          "name": "Warm up",
+          "rounds": 1,
+          "restBetweenRounds": 0,
+          "exercises": [
+            {
+              "name": "Side to side rotation",
+              "duration": 15,
+              "rest": 2,
+              "equipment": []
+            },
+            {
+              "name": "Rotating toe touches",
+              "duration": 15,
+              "rest": 2,
+              "equipment": []
+            },
+            {
+              "name": "Open the gate right",
+              "duration": 15,
+              "rest": 2,
+              "equipment": []
+            },
+            {
+              "name": "Open the gate left",
+              "duration": 15,
+              "rest": 2,
+              "equipment": []
+            },
+            {
+              "name": "Knee rotation clockwise",
+              "duration": 15,
+              "rest": 2,
+              "equipment": []
+            },
+            {
+              "name": "Knee rotation counter clockwise",
+              "duration": 15,
+              "rest": 2,
+              "equipment": []
+            }
+          ]
+        },
+        {
+          "name": "Workout",
+          "rounds": 7,
+          "restBetweenRounds": 90,
+          "exercises": [
+            {
+              "name": "Squats",
+              "duration": 40,
+              "rest": 25,
+              "equipment": ["Dumbbell 30 lbs", "Dumbbell 30 lbs"]
+            },
+            {
+              "name": "Hip thrusts",
+              "duration": 40,
+              "rest": 25,
+              "equipment": ["Dumbbell 50 lbs", "Bench"]
+            },
+            {
+              "name": "Bulgarian split squats right",
+              "duration": 40,
+              "rest": 25,
+              "equipment": ["Dumbbell 20 lbs", "Dumbbell 20 lbs", "Bench"]
+            },
+            {
+              "name": "Bulgarian split squats left",
+              "duration": 40,
+              "rest": 25,
+              "equipment": ["Dumbbell 20 lbs", "Dumbbell 20 lbs", "Bench"]
+            },
+            {
+              "name": "Pulse squats",
+              "duration": 40,
+              "rest": 25,
+              "equipment": ["Dumbbell 20 lbs", "Dumbbell 20 lbs"]
+            },
+            {
+              "name": "Romanian Deadlift",
+              "duration": 40,
+              "rest": 25,
+              "equipment": ["Dumbbell 20 lbs", "Dumbbell 20 lbs"]
+            },
+            {
+              "name": "Walking lunges",
+              "duration": 40,
+              "rest": 25,
+              "equipment": ["Dumbbell 20 lbs", "Dumbbell 20 lbs"]
+            }
+          ]
+        },
+        {
+          "name": "Warm down",
+          "rounds": 1,
+          "restBetweenRounds": 0,
+          "exercises": [
+            {
+              "name": "Standing quad stretch right",
+              "duration": 10,
+              "rest": 0,
+              "equipment": []
+            },
+            {
+              "name": "Standing quad stretch left",
+              "duration": 10,
+              "rest": 0,
+              "equipment": []
+            },
+            {
+              "name": "Figure four stretch right",
+              "duration": 10,
+              "rest": 0,
+              "equipment": []
+            },
+            {
+              "name": "Figure four stretch left",
+              "duration": 10,
+              "rest": 0,
+              "equipment": []
+            },
+            {
+              "name": "Cross legged chest to flor",
+              "duration": 10,
+              "rest": 0,
+              "equipment": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Monday - Upper body",
+      "equipment": ["Mat", "Dumbbells", "Bench"],
+      "startMessages": ["Start recording functional training"],
+      "endMessages": ["Stop recording functional training"],
+      "groups": [
+        {
+          "name": "Warm up",
+          "rounds": 1,
+          "restBetweenRounds": 0,
+          "exercises": [
+            {
+              "name": "Side to side rotation",
+              "duration": 15,
+              "rest": 2,
+              "equipment": []
+            },
+            {
+              "name": "Rotating toe touches",
+              "duration": 15,
+              "rest": 2,
+              "equipment": []
+            },
+            {
+              "name": "Cross body shoulder stretch right",
+              "duration": 15,
+              "rest": 2,
+              "equipment": []
+            },
+            {
+              "name": "Cross body shoulder stretch left",
+              "duration": 15,
+              "rest": 2,
+              "equipment": []
+            },
+            {
+              "name": "Elbow rotations external",
+              "duration": 15,
+              "rest": 2,
+              "equipment": []
+            },
+            {
+              "name": "Elbow rotations internal",
+              "duration": 15,
+              "rest": 2,
+              "equipment": []
+            }
+          ]
+        },
+        {
+          "name": "Workout",
+          "rounds": 7,
+          "restBetweenRounds": 90,
+          "exercises": [
+            {
+              "name": "Dumbbell overhead press",
+              "duration": 40,
+              "rest": 30,
+              "equipment": ["Dumbbell 20 lbs", "Dumbbell 20 lbs"]
+            },
+            {
+              "name": "Dumbbell row left",
+              "duration": 40,
+              "rest": 30,
+              "equipment": ["Dumbbell 30 lbs", "Bench"]
+            },
+            {
+              "name": "Dumbbell row right",
+              "duration": 40,
+              "rest": 30,
+              "equipment": ["Dumbbell 30 lbs", "Bench"]
+            },
+            {
+              "name": "Dumbbell biceps curl alternating",
+              "duration": 40,
+              "rest": 30,
+              "equipment": ["Dumbbell 30 lbs", "Bench"]
+            },
+            {
+              "name": "Dumbbell bench press",
+              "duration": 40,
+              "rest": 30,
+              "equipment": ["Dumbbell 30 lbs", "Bench"]
+            }
+          ]
+        },
+        {
+          "name": "Warm down",
+          "rounds": 1,
+          "restBetweenRounds": 0,
+          "exercises": [
+            {
+              "name": "Overhead lat strecth right",
+              "duration": 10,
+              "rest": 0,
+              "equipment": []
+            },
+            {
+              "name": "Overhead lat strecth  left",
+              "duration": 10,
+              "rest": 0,
+              "equipment": []
+            },
+            {
+              "name": "Side stretch right",
+              "duration": 10,
+              "rest": 0,
+              "equipment": []
+            },
+            {
+              "name": "Side stretch left",
+              "duration": 10,
+              "rest": 0,
+              "equipment": []
+            },
+            {
+              "name": "Cross legged chest to flor",
+              "duration": 10,
+              "rest": 0,
+              "equipment": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
