@@ -15,14 +15,14 @@
 }
 
 .inner {
-  width: 257px;
-  height: 77px;
+  width: 237px;
+  height: 70px;
   flex: none;
   order: 0;
   flex-grow: 0;
   text-align: center;
   font-size: 64px;
-  line-height: 77px;
+  line-height: 70px;
   color: #FFFFFF;
 }
 

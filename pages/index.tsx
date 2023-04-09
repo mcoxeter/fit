@@ -47,7 +47,7 @@ export default function Home() {
   );
 }
 
-function totalDuration(workout: IWorkout): number {
+export function totalDuration(workout: IWorkout): number {
   let totalDuration = 0;
   workout.groups.forEach((g) => {
     for (let round = 0; round < g.rounds; round++) {

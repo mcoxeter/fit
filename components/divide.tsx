@@ -4,7 +4,6 @@ export default function Divide() {
       style={{
         width: '100%',
         height: '1px',
-        marginTop: '16px',
         background: '#AaAaAa'
       }}
     />

@@ -3,8 +3,8 @@
     {
       "name": "Sunday - Lower body",
       "equipment": ["Mat", "Dumbbells", "Bench"],
-      "startMessages": ["Start recording functional training"],
-      "endMessages": ["Stop recording functional training"],
+      "startMessages": "Start recording functional training",
+      "endMessages": "Stop recording functional training",
       "groups": [
         {
           "name": "Warm up",
