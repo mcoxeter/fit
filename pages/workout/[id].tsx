@@ -1,15 +1,32 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { IWorkout, IWorkouts } from '../api/workouts';
-import Header, { stateType } from './header';
+import Button from './button';
 
+export type stateType = 'Stopped' | 'Started' | 'Paused';
 export default function Workout() {
   const {
     query: { id }
   } = useRouter();
 
   const [data, setData] = useState<IWorkout | null>();
-  const [state, setState] = useState<stateType>('Stop');
+  const [state, setState] = useState<stateType>('Stopped');
+  const [elapsed, setElapsed] = useState(0);
+  const [exerciseIndex, setExerciseIndex] = useState(0);
+
+  useEffect(() => {
+    const handle = setInterval(() => {
+      if (state === 'Started') {
+        setElapsed((prev) => prev + 1);
+      }
+      if (state === 'Stopped') {
+        setElapsed(0);
+      }
+    }, 1000);
+    return () => {
+      clearInterval(handle);
+    };
+  }, [state]);
 
   useEffect(() => {
     async function getData() {
@@ -26,11 +43,42 @@ export default function Workout() {
 
   return (
     <div>
-      <Header
-        workoutName={data?.name ?? ''}
-        state={state}
-        onStateChange={(newState) => setState(newState)}
+      <Button
+        text={getButtonText(state, elapsed)}
+        onClick={() => setState(getNextState(state))}
+        variant={state === 'Paused' ? 'Info' : 'Success'}
       />
+      {state === 'Paused' ? (
+        <Button
+          text={'Quit'}
+          variant='Warning'
+          onClick={() => {
+            setState('Stopped');
+            setExerciseIndex(0);
+          }}
+        ></Button>
+      ) : null}
     </div>
   );
+}
+
+function getNextState(state: stateType): stateType {
+  switch (state) {
+    case 'Stopped':
+    case 'Paused':
+      return 'Started';
+    case 'Started':
+      return 'Paused';
+  }
+}
+
+function getButtonText(state: stateType, elapsed: number): string {
+  switch (state) {
+    case 'Stopped':
+      return 'Start';
+    case 'Started':
+      return `${elapsed} secs`;
+    case 'Paused':
+      return 'Resume';
+  }
 }
