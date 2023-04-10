@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import Button from './button';
 import InfoCard from './info-card';
 import { IStateProps } from './[id]';
 
@@ -9,7 +10,7 @@ export function StartGroup(props: StartGroupProps) {
 
   useEffect(() => {
     if (completePercentage >= 100) {
-      props.onStateChange('PreExercise');
+      props.onStateChange(group?.rounds ?? 0 > 1 ? 'Round' : 'PreExercise');
     }
   }, [completePercentage]);
 
@@ -18,6 +19,7 @@ export function StartGroup(props: StartGroupProps) {
       style={{
         padding: '10px',
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'space-between'
       }}
     >
@@ -26,7 +28,12 @@ export function StartGroup(props: StartGroupProps) {
         line1={''}
         line2={''}
         line3={''}
-        completePercentage={completePercentage}
+        completePercentage={Math.round(completePercentage)}
+      />
+      <Button
+        text='Pause'
+        onClick={() => props.onStateChange('Paused')}
+        variant='Success'
       />
     </div>
   );

@@ -18,6 +18,7 @@ export function BeginWorkout(props: BeginWorkoutProps) {
       style={{
         padding: '10px',
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'space-between'
       }}
     >
@@ -26,7 +27,7 @@ export function BeginWorkout(props: BeginWorkoutProps) {
         line1={props.workout?.equipment[0] ?? ''}
         line2={props.workout?.equipment[1] ?? ''}
         line3={props.workout?.equipment[2] ?? ''}
-        completePercentage={completePercentage}
+        completePercentage={Math.round(completePercentage)}
       />
       <Button
         text='Ready'

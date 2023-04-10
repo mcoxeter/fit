@@ -8,6 +8,7 @@ import { Exercise } from './exercise';
 import { Paused } from './paused';
 import { PostExercise } from './post-exercise';
 import { PreExercise } from './pre-exercise';
+import { Round } from './round';
 import { StartGroup } from './start-group';
 import { StartMessage } from './start-message';
 
@@ -16,24 +17,28 @@ export type stateType =
   | 'BeginWorkout'
   | 'StartGroup'
   | 'EndGroup'
+  | 'Round'
   | 'PreExercise'
   | 'Exercise'
   | 'PostExercise'
   | 'EndWorkout'
-  | 'Paused';
+  | 'Paused'
+  | 'Resume';
 
-export type timerType = 'Reset' | 'Counting' | 'Paused';
+export type timerType = 'Counting' | 'Paused';
 export default function Workout() {
   const {
     query: { id }
   } = useRouter();
 
-  const [data, setData] = useState<IWorkout | undefined>();
+  const [workout, setWorkout] = useState<IWorkout | undefined>();
   const [state, setState] = useState<stateType>('StartMessage');
+  const [prevState, setPrevState] = useState<stateType>('StartMessage');
   const [groupIndex, setGroupIndex] = useState(0);
   const [exerciseIndex, setExerciseIndex] = useState(0);
+  const [roundIndex, setRoundIndex] = useState(0);
   const [elapsed, setElapsed] = useState(0);
-  const [timerState, setTimerState] = useState<timerType>('Reset');
+  const [timerState, setTimerState] = useState<timerType>('Counting');
 
   useEffect(() => {
     const handle = setInterval(() => {
@@ -56,23 +61,32 @@ export default function Workout() {
     switch (newState) {
       case 'StartMessage':
         setElapsed(0);
-        setTimerState('Counting');
         break;
       case 'BeginWorkout':
         setElapsed(0);
-        setTimerState('Counting');
         break;
-
       case 'StartGroup':
         setElapsed(0);
         setGroupIndex((prev) => prev + 1);
+        setRoundIndex(0);
         setExerciseIndex(0);
-        setTimerState('Counting');
+        break;
+      case 'Round':
+        setElapsed(0);
+        setRoundIndex((prev) => prev + 1);
         break;
       case 'PreExercise':
         setExerciseIndex((prev) => prev + 1);
         break;
+      case 'Paused':
+        setTimerState('Paused');
+        break;
+      case 'Resume':
+        setTimerState('Counting');
+        newState = prevState;
+        break;
     }
+    setPrevState(state);
     setState(newState);
   };
 
@@ -81,7 +95,7 @@ export default function Workout() {
       const resp = await fetch('/api/workouts');
       const data = (await resp.json()) as IWorkouts;
       if (data) {
-        setData(data.workouts[id as any as number]);
+        setWorkout(data.workouts[id as any as number]);
       }
     }
     if (id) {
@@ -90,11 +104,13 @@ export default function Workout() {
   }, [id]);
 
   const props: IStateProps = {
-    workout: data,
+    workout,
+    prevState,
     onStateChange: changeState,
-    groupIndex: groupIndex,
-    exerciseIndex: exerciseIndex,
-    elapsed: elapsed
+    groupIndex,
+    exerciseIndex,
+    elapsed,
+    roundIndex
   };
 
   switch (state) {
@@ -106,6 +122,8 @@ export default function Workout() {
       return <StartGroup {...props} />;
     case 'EndGroup':
       return <EndGroup {...props} />;
+    case 'Round':
+      return <Round {...props} />;
     case 'PreExercise':
       return <PreExercise {...props} />;
     case 'Exercise':
@@ -118,66 +136,17 @@ export default function Workout() {
       return <Paused {...props} />;
   }
   return null;
-
-  // if (state === 'Stopped') {
-  //   return (
-  //     <div className={`${styles.component}`}>
-  //       <Overview workout={data} />
-  //       <Button
-  //         text={getButtonText(state, elapsed)}
-  //         onClick={() => setState(getNextState(state))}
-  //         variant={'Success'}
-  //       />
-  //     </div>
-  //   );
-  // }
-
-  // return (
-  //   <div>
-  //     <Button
-  //       text={getButtonText(state, elapsed)}
-  //       onClick={() => setState(getNextState(state))}
-  //       variant={state === 'Paused' ? 'Info' : 'Success'}
-  //     />
-  //     {state === 'Paused' ? (
-  //       <Button
-  //         text={'Quit'}
-  //         variant='Warning'
-  //         onClick={() => {
-  //           setState('Stopped');
-  //           setExerciseIndex(0);
-  //         }}
-  //       ></Button>
-  //     ) : null}
-  //   </div>
-  // );
 }
-
-// function getNextState(state: stateType): stateType {
-//   switch (state) {
-//     case 'Stopped':
-//     case 'Paused':
-//       return 'Started';
-//     case 'Started':
-//       return 'Paused';
-//   }
-// }
-
-// function getButtonText(state: stateType, elapsed: number): string {
-//   switch (state) {
-//     case 'Stopped':
-//       return 'Start';
-//     case 'Started':
-//       return `${elapsed} secs`;
-//     case 'Paused':
-//       return 'Resume';
-//   }
-// }
 
 export interface IStateProps {
   workout?: IWorkout;
+
+  prevState: stateType;
   onStateChange: (newState: stateType) => void;
+
   groupIndex: number;
   exerciseIndex: number;
+
+  roundIndex: number;
   elapsed: number;
 }

@@ -18,6 +18,7 @@ export function StartMessage(props: StartMessageProps) {
       style={{
         padding: '10px',
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'space-between'
       }}
     >
@@ -26,7 +27,7 @@ export function StartMessage(props: StartMessageProps) {
         line1={'Apple Watch'}
         line2={''}
         line3=''
-        completePercentage={completePercentage}
+        completePercentage={Math.round(completePercentage)}
       />
       <Button
         text='Ready'
