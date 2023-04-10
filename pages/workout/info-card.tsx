@@ -28,7 +28,6 @@ export default function InfoCard({
       <label className={`${styles.line}`}>{line2}</label>
       <label className={`${styles.line}`}>{line3}</label>
       <Progress percent={completePercentage}></Progress>
-      <Divide></Divide>
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { IStateProps } from './[id]';
 export interface StartMessageProps extends IStateProps {}
 export function StartMessage(props: StartMessageProps) {
   const completePercentage = (100 / 20) * props.elapsed;
+  const message = props.workout?.startMessage ?? '';
 
   useEffect(() => {
     if (completePercentage >= 100) {
@@ -23,7 +24,7 @@ export function StartMessage(props: StartMessageProps) {
       }}
     >
       <InfoCard
-        heading={props.workout?.startMessages ?? ''}
+        heading={message}
         line1={'Apple Watch'}
         line2={''}
         line3=''

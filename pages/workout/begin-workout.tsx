@@ -13,6 +13,10 @@ export function BeginWorkout(props: BeginWorkoutProps) {
     }
   }, [completePercentage]);
 
+  useEffect(() => {
+    props.onStatusMessage(props.workout?.name ?? '');
+  }, []);
+
   return (
     <div
       style={{

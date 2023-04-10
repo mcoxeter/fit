@@ -27,6 +27,7 @@ export type stateType =
 
 export type timerType = 'Counting' | 'Paused';
 export default function Workout() {
+  //const synth = window?.speechSynthesis;
   const {
     query: { id }
   } = useRouter();
@@ -39,6 +40,7 @@ export default function Workout() {
   const [roundIndex, setRoundIndex] = useState(0);
   const [elapsed, setElapsed] = useState(0);
   const [timerState, setTimerState] = useState<timerType>('Counting');
+  const [readout, setReadout] = useState<string[]>([]);
 
   useEffect(() => {
     const handle = setInterval(() => {
@@ -56,6 +58,14 @@ export default function Workout() {
       changeState('StartMessage');
     }
   }, [state]);
+
+  useEffect(() => {
+    const [message, ...rest] = readout;
+    if (message) {
+      window?.speechSynthesis.speak(new SpeechSynthesisUtterance(message));
+      setReadout(rest);
+    }
+  }, [readout]);
 
   const changeState = (newState: stateType) => {
     switch (newState) {
@@ -103,10 +113,19 @@ export default function Workout() {
     }
   }, [id]);
 
+  if (!workout) {
+    return null;
+  }
+
   const props: IStateProps = {
     workout,
     prevState,
     onStateChange: changeState,
+    onStatusMessage: (message) => {
+      if (!readout.some((x) => x === message)) {
+        setReadout(readout.concat(message));
+      }
+    },
     groupIndex,
     exerciseIndex,
     elapsed,
@@ -143,6 +162,8 @@ export interface IStateProps {
 
   prevState: stateType;
   onStateChange: (newState: stateType) => void;
+
+  onStatusMessage: (message: string) => void;
 
   groupIndex: number;
   exerciseIndex: number;

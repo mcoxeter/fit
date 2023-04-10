@@ -16,8 +16,8 @@ export interface IWorkouts {
 export interface IWorkout {
   name: string;
 
-  startMessages: string;
-  endMessages: string;
+  startMessage: string;
+  endMessage: string;
   equipment: string[];
 
   groups: IExerciseGroup[];
