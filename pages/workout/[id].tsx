@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { IWorkout, IWorkouts } from '../api/workouts';
 import { BeginWorkout } from './begin-workout';
 import { EndGroup } from './end-group';
+import { EndRound } from './end-round';
 import { EndWorkout } from './end-workout';
 import { Exercise } from './exercise';
 import { Paused } from './paused';
@@ -18,6 +19,7 @@ export type stateType =
   | 'StartGroup'
   | 'EndGroup'
   | 'Round'
+  | 'EndRound'
   | 'PreExercise'
   | 'Exercise'
   | 'PostExercise'
@@ -84,8 +86,13 @@ export default function Workout() {
       case 'Round':
         setElapsed(0);
         setRoundIndex((prev) => prev + 1);
+        setExerciseIndex(0);
+        break;
+      case 'EndRound':
+        setElapsed(0);
         break;
       case 'PreExercise':
+        setElapsed(0);
         setExerciseIndex((prev) => prev + 1);
         break;
       case 'Paused':
@@ -94,6 +101,15 @@ export default function Workout() {
       case 'Resume':
         setTimerState('Counting');
         newState = prevState;
+        break;
+      case 'Exercise':
+        setElapsed(0);
+        break;
+      case 'PostExercise':
+        setElapsed(0);
+        break;
+      case 'EndGroup':
+        setElapsed(0);
         break;
     }
     setPrevState(state);
@@ -132,6 +148,11 @@ export default function Workout() {
     roundIndex
   };
 
+  console.log(
+    state,
+    `groupIndex: ${groupIndex}, exerciseIndex: ${exerciseIndex}, roundIndex: ${roundIndex}`
+  );
+
   switch (state) {
     case 'StartMessage':
       return <StartMessage {...props} />;
@@ -143,6 +164,8 @@ export default function Workout() {
       return <EndGroup {...props} />;
     case 'Round':
       return <Round {...props} />;
+    case 'EndRound':
+      return <EndRound {...props} />;
     case 'PreExercise':
       return <PreExercise {...props} />;
     case 'Exercise':

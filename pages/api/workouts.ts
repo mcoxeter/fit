@@ -32,6 +32,7 @@ export interface IExerciseGroup {
 
 export interface IExercise {
   name: string;
+  prepare: number;
   rest: number;
   duration: number;
   equipment: string[];

@@ -13,7 +13,6 @@ export function Paused(props: PausedProps) {
   useEffect(() => {
     const handle = setInterval(() => {
       setElapsed((prev) => prev + 1);
-      console.log('elapsed', elapsed + 1);
       if (elapsed + 1 > 20) {
         props.onStateChange('Resume');
       }
@@ -33,7 +32,7 @@ export function Paused(props: PausedProps) {
       }}
     >
       <InfoCard
-        heading={'Paused'}
+        heading={'Workout Paused'}
         line1={''}
         line2={''}
         line3=''
