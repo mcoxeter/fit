@@ -1,24 +1,19 @@
+import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import Button from './button';
 import InfoCard from './info-card';
 import { IStateProps } from './[id]';
 
-export interface EndGroupProps extends IStateProps {}
-export function EndGroup(props: EndGroupProps) {
-  const groups = props.workout?.groups ?? [];
-  const groupIndex = props.groupIndex - 1;
-  const duration = 5;
-  const message = `End of ${groups[groupIndex].name}`;
+export interface EndMessageProps extends IStateProps {}
+export function EndMessage(props: EndMessageProps) {
+  const duration = 20;
+  const router = useRouter();
   const completePercentage = (100 / duration) * props.elapsed;
-  const isLastGroup = groupIndex >= groups.length - 1;
+  const message = props.workout?.endMessage ?? '';
 
   useEffect(() => {
     if (completePercentage >= 100) {
-      if (isLastGroup) {
-        props.onStateChange('EndWorkout');
-        return;
-      }
-      props.onStateChange('StartGroup');
+      router.push('/');
     }
   }, [completePercentage]);
 
@@ -37,14 +32,14 @@ export function EndGroup(props: EndGroupProps) {
     >
       <InfoCard
         heading={message}
-        line1={''}
+        line1={'Apple Watch'}
         line2={''}
-        line3={''}
+        line3=''
         completePercentage={Math.round(completePercentage)}
       />
       <Button
-        text='Pause'
-        onClick={() => props.onStateChange('Paused')}
+        text='Finish'
+        onClick={() => router.push('/')}
         variant='Success'
       />
     </div>

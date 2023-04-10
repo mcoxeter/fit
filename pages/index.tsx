@@ -54,6 +54,7 @@ export function totalDuration(workout: IWorkout): number {
       g.exercises.forEach((ex) => {
         totalDuration += ex.duration;
         totalDuration += ex.rest;
+        totalDuration += ex.prepare;
       });
       totalDuration += g.restBetweenRounds;
     }

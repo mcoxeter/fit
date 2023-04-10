@@ -16,15 +16,10 @@ export function PostExercise(props: PostExerciseProps) {
   const message = `Rest ${restTime} seconds`;
 
   const isLastExercise = exerciseIndex >= exercises.length - 1;
-  const isLastRound = props.roundIndex >= groups[groupIndex].rounds - 1;
 
   useEffect(() => {
     if (completePercentage >= 100) {
       if (isLastExercise) {
-        // if (isLastRound) {
-        //   props.onStateChange('EndGroup');
-        //   return;
-        // }
         props.onStateChange('EndRound');
         return;
       }
@@ -33,7 +28,9 @@ export function PostExercise(props: PostExerciseProps) {
   }, [completePercentage]);
 
   useEffect(() => {
-    props.onStatusMessage(message);
+    if (restTime > 0) {
+      props.onStatusMessage(message);
+    }
   }, []);
 
   return (

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { IWorkout, IWorkouts } from '../api/workouts';
 import { BeginWorkout } from './begin-workout';
 import { EndGroup } from './end-group';
+import { EndMessage } from './end-message';
 import { EndRound } from './end-round';
 import { EndWorkout } from './end-workout';
 import { Exercise } from './exercise';
@@ -25,7 +26,8 @@ export type stateType =
   | 'PostExercise'
   | 'EndWorkout'
   | 'Paused'
-  | 'Resume';
+  | 'Resume'
+  | 'EndMessage';
 
 export type timerType = 'Counting' | 'Paused';
 export default function Workout() {
@@ -111,6 +113,9 @@ export default function Workout() {
       case 'EndGroup':
         setElapsed(0);
         break;
+      case 'EndMessage':
+        setElapsed(0);
+        break;
     }
     setPrevState(state);
     setState(newState);
@@ -176,6 +181,8 @@ export default function Workout() {
       return <EndWorkout {...props} />;
     case 'Paused':
       return <Paused {...props} />;
+    case 'EndMessage':
+      return <EndMessage {...props} />;
   }
   return null;
 }
