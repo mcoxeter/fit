@@ -57,7 +57,7 @@
         },
         {
           "name": "Workout",
-          "rounds": 2,
+          "rounds": 7,
           "restBetweenRounds": 90,
           "exercises": [
             {
@@ -97,13 +97,6 @@
             },
             {
               "name": "Romanian Deadlift",
-              "duration": 35,
-              "prepare": 10,
-              "rest": 25,
-              "equipment": ["Dumbbell 20 lbs", "Dumbbell 20 lbs"]
-            },
-            {
-              "name": "Walking lunges",
               "duration": 35,
               "prepare": 10,
               "rest": 25,
