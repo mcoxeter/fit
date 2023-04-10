@@ -1,5 +1,5 @@
-import { totalDuration } from '..';
-import { IWorkout } from '../api/workouts';
+import { totalDuration } from '../pages';
+import { IWorkout } from '../pages/api/workouts';
 import InfoCard from './info-card';
 
 export interface OverviewProps {

@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { IWorkout } from '../api/workouts';
+import { IWorkout } from '../pages/api/workouts';
 import Button from './button';
 import InfoCard from './info-card';
-import { stateType, IStateProps } from './[id]';
+import { stateType, IStateProps } from '../pages/workout/[id]';
 
 export interface PreExerciseProps extends IStateProps {}
 export function PreExercise(props: PreExerciseProps) {

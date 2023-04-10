@@ -1,21 +1,24 @@
+import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { IWorkout } from '../api/workouts';
 import Button from './button';
 import InfoCard from './info-card';
-import { stateType, IStateProps } from './[id]';
+import { IStateProps } from '../pages/workout/[id]';
 
-export interface RoundProps extends IStateProps {}
-export function Round(props: RoundProps) {
-  const completePercentage = (100 / 2) * props.elapsed;
+export interface EndMessageProps extends IStateProps {}
+export function EndMessage(props: EndMessageProps) {
+  const duration = 20;
+  const router = useRouter();
+  const completePercentage = (100 / duration) * props.elapsed;
+  const message = props.workout?.endMessage ?? '';
 
   useEffect(() => {
     if (completePercentage >= 100) {
-      props.onStateChange('PreExercise');
+      router.push('/');
     }
   }, [completePercentage]);
 
   useEffect(() => {
-    props.onStatusMessage(`Round ${props.roundIndex}`);
+    props.onStatusMessage(message);
   }, []);
 
   return (
@@ -28,15 +31,15 @@ export function Round(props: RoundProps) {
       }}
     >
       <InfoCard
-        heading={`Round ${props.roundIndex}`}
-        line1={''}
+        heading={message}
+        line1={'Apple Watch'}
         line2={''}
-        line3={''}
+        line3=''
         completePercentage={Math.round(completePercentage)}
       />
       <Button
-        text='Pause'
-        onClick={() => props.onStateChange('Paused')}
+        text='Finish'
+        onClick={() => router.push('/')}
         variant='Success'
       />
     </div>

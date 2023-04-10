@@ -1,18 +1,18 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { IWorkout, IWorkouts } from '../api/workouts';
-import { BeginWorkout } from './begin-workout';
-import { EndGroup } from './end-group';
-import { EndMessage } from './end-message';
-import { EndRound } from './end-round';
-import { EndWorkout } from './end-workout';
-import { Exercise } from './exercise';
-import { Paused } from './paused';
-import { PostExercise } from './post-exercise';
-import { PreExercise } from './pre-exercise';
-import { Round } from './round';
-import { StartGroup } from './start-group';
-import { StartMessage } from './start-message';
+import { BeginWorkout } from '../../components/begin-workout';
+import { EndGroup } from '../../components/end-group';
+import { EndMessage } from '../../components/end-message';
+import { EndRound } from '../../components/end-round';
+import { EndWorkout } from '../../components/end-workout';
+import { Exercise } from '../../components/exercise';
+import { Paused } from '../../components/paused';
+import { PostExercise } from '../../components/post-exercise';
+import { PreExercise } from '../../components/pre-exercise';
+import { Round } from '../../components/round';
+import { StartGroup } from '../../components/start-group';
+import { StartMessage } from '../../components/start-message';
 
 export type stateType =
   | 'StartMessage'

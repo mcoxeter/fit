@@ -1,23 +1,24 @@
 import { useEffect } from 'react';
-import { IWorkout } from '../api/workouts';
 import Button from './button';
 import InfoCard from './info-card';
-import { stateType, IStateProps } from './[id]';
+import { IStateProps } from '../pages/workout/[id]';
 
-export interface ExerciseProps extends IStateProps {}
-export function Exercise(props: ExerciseProps) {
-  const exercise =
-    props.workout?.groups[props.groupIndex - 1].exercises[
-      props.exerciseIndex - 1
-    ];
-  const duration = exercise?.duration ?? 0;
-  const name = exercise?.name ?? '';
-  const message = `${name} ${duration} seconds`;
+export interface EndGroupProps extends IStateProps {}
+export function EndGroup(props: EndGroupProps) {
+  const groups = props.workout?.groups ?? [];
+  const groupIndex = props.groupIndex - 1;
+  const duration = 5;
+  const message = `End of ${groups[groupIndex].name.toLocaleLowerCase()}`;
   const completePercentage = (100 / duration) * props.elapsed;
+  const isLastGroup = groupIndex >= groups.length - 1;
 
   useEffect(() => {
     if (completePercentage >= 100) {
-      props.onStateChange('PostExercise');
+      if (isLastGroup) {
+        props.onStateChange('EndWorkout');
+        return;
+      }
+      props.onStateChange('StartGroup');
     }
   }, [completePercentage]);
 
@@ -36,9 +37,9 @@ export function Exercise(props: ExerciseProps) {
     >
       <InfoCard
         heading={message}
-        line1={exercise?.equipment[0] ?? ''}
-        line2={exercise?.equipment[1] ?? ''}
-        line3={exercise?.equipment[2] ?? ''}
+        line1={''}
+        line2={''}
+        line3={''}
         completePercentage={Math.round(completePercentage)}
       />
       <Button

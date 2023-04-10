@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import Button from './button';
 import InfoCard from './info-card';
-import { IStateProps } from './[id]';
+import { IStateProps } from '../pages/workout/[id]';
 
 export interface EndWorkoutProps extends IStateProps {}
 export function EndWorkout(props: EndWorkoutProps) {

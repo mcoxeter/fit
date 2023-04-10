@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import Button from './button';
 import InfoCard from './info-card';
-import { IStateProps } from './[id]';
+import { IStateProps } from '../pages/workout/[id]';
 
 export interface StartGroupProps extends IStateProps {}
 export function StartGroup(props: StartGroupProps) {

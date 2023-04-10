@@ -1,36 +1,28 @@
 import { useEffect } from 'react';
 import Button from './button';
 import InfoCard from './info-card';
-import { IStateProps } from './[id]';
+import { IStateProps } from '../pages/workout/[id]';
 
-export interface PostExerciseProps extends IStateProps {}
-export function PostExercise(props: PostExerciseProps) {
+export interface EndRoundProps extends IStateProps {}
+export function EndRound(props: EndRoundProps) {
   const groups = props.workout?.groups ?? [];
   const groupIndex = props.groupIndex - 1;
-  const exerciseIndex = props.exerciseIndex - 1;
-  const exercises = groups[groupIndex].exercises ?? [];
-
-  const exercise = exercises[exerciseIndex];
-  const restTime = exercise?.rest ?? 0;
-  const completePercentage = (100 / restTime) * props.elapsed;
-  const message = restTime > 0 ? `Rest ${restTime} seconds` : '';
-
-  const isLastExercise = exerciseIndex >= exercises.length - 1;
+  const duration = groups[groupIndex].restBetweenRounds;
+  const completePercentage = (100 / duration) * props.elapsed;
+  const isLastRound = props.roundIndex >= groups[groupIndex].rounds;
 
   useEffect(() => {
     if (completePercentage >= 100) {
-      if (isLastExercise) {
-        props.onStateChange('EndRound');
+      if (isLastRound) {
+        props.onStateChange('EndGroup');
         return;
       }
-      props.onStateChange('PreExercise');
+      props.onStateChange('Round');
     }
   }, [completePercentage]);
 
   useEffect(() => {
-    if (message !== '') {
-      props.onStatusMessage(message);
-    }
+    props.onStatusMessage(`End of round ${props.roundIndex}`);
   }, []);
 
   return (
@@ -43,7 +35,7 @@ export function PostExercise(props: PostExerciseProps) {
       }}
     >
       <InfoCard
-        heading={message}
+        heading={`End of round ${props.roundIndex}`}
         line1={''}
         line2={''}
         line3={''}
