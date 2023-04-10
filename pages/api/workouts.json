@@ -28,14 +28,14 @@
             {
               "name": "Open the gate right",
               "duration": 15,
-              "prepare": 2,
+              "prepare": 5,
               "rest": 0,
               "equipment": []
             },
             {
               "name": "Open the gate left",
               "duration": 15,
-              "prepare": 2,
+              "prepare": 5,
               "rest": 0,
               "equipment": []
             },
