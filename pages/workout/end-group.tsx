@@ -8,7 +8,7 @@ export function EndGroup(props: EndGroupProps) {
   const groups = props.workout?.groups ?? [];
   const groupIndex = props.groupIndex - 1;
   const duration = 5;
-  const message = `End of ${groups[groupIndex].name}`;
+  const message = `End of ${groups[groupIndex].name.toLocaleLowerCase()}`;
   const completePercentage = (100 / duration) * props.elapsed;
   const isLastGroup = groupIndex >= groups.length - 1;
 

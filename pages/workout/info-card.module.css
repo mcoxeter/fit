@@ -10,6 +10,7 @@
 .heading {
   font-weight: 700;
   font-size: 36px;
+  min-height: 43px;
 }
 
 .subHeading {

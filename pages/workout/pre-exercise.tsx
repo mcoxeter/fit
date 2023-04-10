@@ -12,7 +12,10 @@ export function PreExercise(props: PreExerciseProps) {
     ];
   const delay = exercise?.prepare ?? 1;
   const completePercentage = (100 / delay) * props.elapsed;
-  const message = `Prepare for ${exercise?.name ?? ''}`;
+  const message =
+    delay > 0
+      ? `Prepare for ${(exercise?.name ?? '').toLocaleLowerCase()}`
+      : '';
 
   useEffect(() => {
     if (completePercentage >= 100) {
@@ -21,7 +24,9 @@ export function PreExercise(props: PreExerciseProps) {
   }, [completePercentage]);
 
   useEffect(() => {
-    props.onStatusMessage(message);
+    if (message !== '') {
+      props.onStatusMessage(message);
+    }
   }, []);
 
   return (

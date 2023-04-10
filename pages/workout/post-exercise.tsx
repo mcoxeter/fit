@@ -13,7 +13,7 @@ export function PostExercise(props: PostExerciseProps) {
   const exercise = exercises[exerciseIndex];
   const restTime = exercise?.rest ?? 0;
   const completePercentage = (100 / restTime) * props.elapsed;
-  const message = `Rest ${restTime} seconds`;
+  const message = restTime > 0 ? `Rest ${restTime} seconds` : '';
 
   const isLastExercise = exerciseIndex >= exercises.length - 1;
 
@@ -28,7 +28,7 @@ export function PostExercise(props: PostExerciseProps) {
   }, [completePercentage]);
 
   useEffect(() => {
-    if (restTime > 0) {
+    if (message !== '') {
       props.onStatusMessage(message);
     }
   }, []);

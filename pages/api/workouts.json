@@ -13,44 +13,44 @@
           "exercises": [
             {
               "name": "Side to side rotation",
-              "duration": 1.5,
-              "prepare": 2,
-              "rest": 2,
+              "duration": 15,
+              "prepare": 0,
+              "rest": 0,
               "equipment": []
             },
             {
               "name": "Rotating toe touches",
-              "duration": 1.5,
-              "prepare": 2,
-              "rest": 2,
+              "duration": 15,
+              "prepare": 0,
+              "rest": 0,
               "equipment": []
             },
             {
               "name": "Open the gate right",
-              "duration": 1.5,
+              "duration": 15,
               "prepare": 2,
-              "rest": 2,
+              "rest": 0,
               "equipment": []
             },
             {
               "name": "Open the gate left",
-              "duration": 1.5,
+              "duration": 15,
               "prepare": 2,
-              "rest": 2,
+              "rest": 0,
               "equipment": []
             },
             {
               "name": "Knee rotation clockwise",
-              "duration": 1.5,
-              "prepare": 2,
-              "rest": 2,
+              "duration": 15,
+              "prepare": 0,
+              "rest": 0,
               "equipment": []
             },
             {
               "name": "Knee rotation counter clockwise",
-              "duration": 1.5,
-              "prepare": 2,
-              "rest": 2,
+              "duration": 15,
+              "prepare": 0,
+              "rest": 0,
               "equipment": []
             }
           ]
@@ -58,55 +58,55 @@
         {
           "name": "Workout",
           "rounds": 2,
-          "restBetweenRounds": 9.0,
+          "restBetweenRounds": 90,
           "exercises": [
             {
               "name": "Squats",
-              "duration": 4.0,
-              "prepare": 1.0,
-              "rest": 2.5,
+              "duration": 35,
+              "prepare": 10,
+              "rest": 25,
               "equipment": ["Dumbbell 30 lbs", "Dumbbell 30 lbs"]
             },
             {
               "name": "Hip thrusts",
-              "duration": 4.0,
-              "prepare": 1.0,
-              "rest": 2.5,
+              "duration": 35,
+              "prepare": 10,
+              "rest": 25,
               "equipment": ["Dumbbell 50 lbs", "Bench"]
             },
             {
               "name": "Bulgarian split squats right",
-              "duration": 4.0,
-              "prepare": 1.5,
-              "rest": 2.5,
+              "duration": 35,
+              "prepare": 15,
+              "rest": 25,
               "equipment": ["Dumbbell 20 lbs", "Dumbbell 20 lbs", "Bench"]
             },
             {
               "name": "Bulgarian split squats left",
-              "duration": 4.0,
-              "prepare": 1.5,
-              "rest": 2.5,
+              "duration": 35,
+              "prepare": 15,
+              "rest": 25,
               "equipment": ["Dumbbell 20 lbs", "Dumbbell 20 lbs", "Bench"]
             },
             {
               "name": "Pulse squats",
-              "duration": 4.0,
-              "prepare": 1.0,
-              "rest": 2.5,
+              "duration": 35,
+              "prepare": 10,
+              "rest": 25,
               "equipment": ["Dumbbell 20 lbs", "Dumbbell 20 lbs"]
             },
             {
               "name": "Romanian Deadlift",
-              "duration": 4.0,
-              "prepare": 1.0,
-              "rest": 2.5,
+              "duration": 35,
+              "prepare": 10,
+              "rest": 25,
               "equipment": ["Dumbbell 20 lbs", "Dumbbell 20 lbs"]
             },
             {
               "name": "Walking lunges",
-              "duration": 4.0,
-              "prepare": 1.0,
-              "rest": 2.5,
+              "duration": 35,
+              "prepare": 10,
+              "rest": 25,
               "equipment": ["Dumbbell 20 lbs", "Dumbbell 20 lbs"]
             }
           ]
